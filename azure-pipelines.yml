@@ -7,8 +7,9 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
--    task: DotNetCoreCLI@2
+  -  task: DotNetCoreCLI@2
      displayName: 'dotnet build $(buildConfiguration)'
      inputs:
         command: 'build'
         arguments: '--configuration $(buildConfiguration)'
+
