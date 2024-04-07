@@ -13,27 +13,19 @@ variables:
   buildConfiguration: Release
   projectDirectory: 'mslearn-tailspin-spacegame-web'
 
-stages:
-  - stage: restore
-    jobs:
-      - job: restore
-        displayName: 'restore dependencies'
-        steps:
-          - task: DotNetCoreCLI@2
-            name: restore
-            inputs:
-              command: 'restore'
-              projects: '$(Build.SourcesDirectory)/$(projectDirectory)'
 
-  - stage: build
-    jobs:
-      - job: build
-        displayName: 'build project'
-        steps:
-          - task: DotNetCoreCLI@2
-            displayName: 'dotnet build $(buildConfiguration)'
-            name: build
-            inputs:
-              command: 'build'
-              arguments: '--configuration $(buildConfiguration)'
-              projects: '$(Build.SourcesDirectory)/$(projectDirectory)'
+steps:
+  - task: DotNetCoreCLI@2
+    name: restore
+    inputs:
+      command: 'restore'
+      projects: '$(Build.SourcesDirectory)/$(projectDirectory)'
+
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build $(buildConfiguration)'
+    name: build
+    inputs:
+      command: 'build'
+      arguments: '--configuration $(buildConfiguration)'
+      projects: '$(Build.SourcesDirectory)/$(projectDirectory)'
