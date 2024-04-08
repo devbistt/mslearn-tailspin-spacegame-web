@@ -9,11 +9,21 @@ variables:
 
 steps:
 - task: SnykSecurityScan@1
+  displayName: 'Synk SAST scan'
   inputs:
     serviceConnectionEndpoint: 'synkServiceConnection'
     testType: 'code'
     codeSeverityThreshold: 'high'
     failOnIssues: true
+  
+- task: SnykSecurityScan@1
+  displayName: 'Synk SCA scan'
+  inputs:
+    serviceConnectionEndpoint: 'synkServiceConnection'
+    testType: 'app'
+    monitorWhen: 'always'
+    failOnIssues: true
+
 - task: Npm@1
   displayName: 'Run npm install'
   inputs:
