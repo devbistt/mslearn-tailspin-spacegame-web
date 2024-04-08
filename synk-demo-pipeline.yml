@@ -8,7 +8,12 @@ variables:
   wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
 
 steps:
-
+- task: SnykSecurityScan@1
+  inputs:
+    serviceConnectionEndpoint: 'synkServiceConnection'
+    testType: 'code'
+    codeSeverityThreshold: 'high'
+    failOnIssues: true
 - task: Npm@1
   displayName: 'Run npm install'
   inputs:
