@@ -58,10 +58,3 @@ steps:
   inputs:
     PathtoPublish: $(Build.ArtifactStagingDirectory)/$(buildConfiguration)
     ArtifactName: 'drop'
-
-- task: PublishCodeCoverageResults@2
-  displayName: 'Publish code coverage results'
-  condition: succeededOrFailed()
-  inputs:
-      codeCoverageTool: 'Cobertura'
-      summaryFileLocation: '**/*coverage.cobertura.xml'
