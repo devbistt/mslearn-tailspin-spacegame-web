@@ -3,8 +3,6 @@ on:
   push:
   repository_dispatch:
   workflow_dispatch:
-
-env:
   # dotnet-version: '6.0.x'
 
 jobs:
