@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  dotnet-version: '6.x'
+  dotnet-version: '6.0.x'
 
 jobs:
   build:
