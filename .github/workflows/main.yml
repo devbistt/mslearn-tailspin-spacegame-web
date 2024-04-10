@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  dotnet-version: 6.x
+  dotnet-version: '6.x'
 
 jobs:
   build:
@@ -20,4 +20,4 @@ jobs:
       - name: Restore project dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build --no-restore --configuration release "**/*.csproj"
+        run: 'dotnet build --no-restore --configuration release **/*.csproj'
